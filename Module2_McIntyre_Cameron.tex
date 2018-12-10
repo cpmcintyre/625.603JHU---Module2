@@ -1,0 +1,433 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\  \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Module \#2}
+\newcommand{\hmwkDueDate}{September 10, 2018}
+\newcommand{\hmwkClass}{625.603 - Statistical Methods and Data Analysis}
+\newcommand{\hmwkClassTime}{Fall 2018}
+\newcommand{\hmwkClassInstructor}{Professor Barry Bodt}
+\newcommand{\hmwkAuthorName}{\textbf{Cameron McIntyre}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at 11:55pm}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+    
+\section{2.6.2}
+A coded message from a CIA operative to his Russian KGB counterpart is to be sent in the form Q4ET, where the first and last entries must be consonants; the second, an integer 1 through 9; and the third, one of the six vowels. How many different ciphers can be transmitted?
+\newline
+\newline
+\textbf{Answer:}
+\newline
+We use the counting Principle:
+There are $20$ options for the first consonant.
+\newline
+There are $9$ options for the digits 1-9.
+\newline
+There are $6$ options for the vowels.
+\newline
+There are $20$ options for the second consonant.
+There are $20$ options for the first consonanrt.
+\newline
+Using the counting principle, we multiply;
+\newline
+$20\cdot 9 \cdot 6 \cdot 20 = 21,600$
+\newline
+Therefore there are $21,600$ possible options for the cipher.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+    
+\section{2.6.6}
+ A fast-food restaurant offers customers a choice of eight toppings that can be added to a hamburger. How many different hamburgers can be ordered?
+\newline
+\newline 
+\textbf{Answer:}
+\newline
+We can approach this problem in 2 ways.
+\newline
+The first is, we can consider the 8 toppings as an 8-nit strip. Then we can exhaust the number of outcomes. This leaves us with:
+\newline
+$$ Num\_of\_Toppings = 2^8 = 256$$
+\newline
+ The second method can be thought of as the sum of the combinations of each of the options from 0-8. We express this as follows. 
+ \newline
+ $$\sum_{i=0}^{8} \binom{8}{i} =\binom{8}{0} +  \binom{8}{1}  + \binom{8}{2}  + \binom{8}{3}  + \binom{8}{4}  + \binom{8}{5}  + \binom{8}{6} + \binom{8}{7} + \binom{8}{8}  $$
+ $$\leftrightarrow$$
+  $$ \sum_{i=0}^{8} \binom{8}{i} = 1 + 8 + 28 + 56 + 70 + 56 + 28 + 8+ 1 = 256$$
+  \newline
+  We arrive at an equivalent result.
+ \newline
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+\section{2.6.26}
+A new horror movie, Friday the 13th, Part X, will star Jason?s great-grandson (also named Jason) as a psy-chotic trying to dispatch (as gruesomely as possible) eight camp counselors, four men and four women. (a) How many scenarios (i.e., victim orders) can the screenwriters devise, assuming they want Jason to do away with all the men before going after any of the women? (b) How many scripts are possible if the only restriction imposed on Jason is that he save Muffy for last?
+\newline
+\newline
+\textbf{Answer:}
+\newline
+\textbf{a)}
+\newline
+Jason has $4!$ choices for the order he kills the men. Jason Also has $4!$ choices for the order he kills the women.
+\newline
+Thus his total amount of ways to "dispatch" the camp counselors is $4! \cdot 4!=24 \cdot 24= 576$ 
+\newline
+\textbf{b)}
+\newline
+If Jason's only constraint on his depravity is that Muffy would be last, then he can kills the first 7 councillor in $7!$ different orderings, leaving 1 way to dispatch Muffy. This makes the number of ways to dispatch everyone as $7! \cdot 1=5040$. Though hopefully Muffy is not an complete idiot, and realizes what is going on after 7 other counselors have been gruesomely 'dispatched".
+\newline
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+\section{2.6.38}
+ How many ways can the letters in the word 
+ 
+ \begin{align*}
+ \centering
+ \text{S L U M G U L L I O N}
+ \end{align*}
+\newline
+\newline 
+\textbf{Answer:}
+\newline
+We regard this question as being unique up tp order. For example $L_1L_2L_3 = L_3L_2L_1$. 
+\newline
+The word is 11 characters long. We can use the combinatoric operator to select the places we put the consonants in $\binom{11}{7}$ ways.
+\newline
+We now have to account for the ordering of the consonants.
+\newline
+Think of it as a set of 5 elements ${LLL,S.M.G.N}$
+\newline
+The LLL must always be first, therefore we have $4!$ ways to arrange the following 4 letters.
+\newline
+We have 4 vowels where 1 is repeated. Being as we are indifferent to permutation. There are $4!$ ways to arrange the 4 vowels. We need to divide this by $2!$ to account for the over counting of the permutations for the repeated "U",
+\newline
+This leaves us:
+\newline
+$$\binom{11}{7}\cdot 4! \cdot \frac{4!}{2!} = 330 \cdot 24 \cdot \frac{24}{2}=95,040$$
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+\section{2.6.52}
+ A boat has a crew of eight: Two of those eight can row only on the stroke side, while three can row only on the bow side. In how many ways can the two sides of the boat be manned? 
+\newline
+\newline
+\newline
+\textbf{Answer:}
+\newline
+For this question we count order as being a different way to man the boat.
+\newline
+On the bow side there are $\binom{3}{1}=3$ ways to fill the empty seat. There are $4!$ ways to arrange the people on the bow side. 
+\newline
+On the Stroke Side, there are $4!$ ways to arrange the remaining 4 people.
+\newline
+This brings our total toL
+\newline
+$$3\cdot 4! \cdot 4!=1728$$
+
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+\section{2.7.2}
+ An urn contains six chips, numbered 1 through 6. Two are chosen at random and their numbers are added together. What is the probability that the resulting sum is equal to 5?
+\newline
+\newline
+\textbf{Answer:}
+\newline
+There are $\binom{6}{2}=30$ ordered pairs of numbers.
+\newline
+Of those combinations the pairs ${(1,4), (2,3)}$ add up to 5. This makes our probability $\frac{4}{30}=\frac{2}{15}$
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+\section{2.7.12}
+
+If the letters in the phrase
+
+ \begin{align*}
+ \centering
+ \text{A \ R O L L I N G  \ S T O N E  \ G A T H E R S  \ N O  \ M O S S}
+ \end{align*}
+
+are arranged at random, what are the chances that not all the S?s will be adjacent?
+\newline
+\newline
+\textbf{Answer:}
+\newline
+There are 26 letters in this expression. That means that there are 26! ways to arrange the letters.
+If we count each of the letters.
+\newline
+Because we are indifferent to the ordering of the letters. The actual number of ways to arrange all of the letters with respect to spelling is. 
+$$ \frac{26!}{4!\cdot 2! \cdot 2! \cdot 4! \cdot 2! \cdot 2! \cdot 2!} $$
+This operation removes all of the permutations of identical letters.
+\newline
+We have to consider the 4 "S" as the one letter. The number of ways that we can create arrangements with three letters is 
+$$ \frac{23!}{2! \cdot 2! \cdot 4! \cdot 2! \cdot 2! \cdot 2!} $$
+Therefore the probability of not getting three in a row is $ 1- P(three in a row)$.
+\newline
+This means that our can be expressed as:
+$$P(No\_three\_in\_a\_row) = 1-\frac{\frac{23!}{2! \cdot 2! \cdot 4! \cdot 2! \cdot 2! \cdot 2!} }{\frac{26!}{4!\cdot 2! \cdot 2! \cdot 4! \cdot 2! \cdot 2! \cdot 2!}}$$
+$$\leftrightarrow$$
+$$P(No\_three\_in\_a\_row) = 1- \frac{4!}{26 \cdot 25 \cdot 24} = 1- \frac{24}{15600}=.9984$$
+\newline
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+\section{3.2.2}
+
+In a nuclear reactor, the fission process is controlled by inserting special rods into the radioactive core to absorb neutrons and slow down the nuclear chain reaction. When functioning properly, these rods serve as a first- line defence against a core meltdown. Suppose a reactor has ten control rods, each operating independently and each having an 0.80 probability of being properly inserted in the event of an ?incident.? Furthermore, suppose that a meltdown will be prevented if at least half the rods perform satisfactorily. What is the probability that, upon demand, the system will fail?
+\newline
+\newline
+\textbf{Answer:}
+\newline
+We define event F as Failure of the system, and f as the failure of a single rod. We are then looking for $$P(F=1)=\sum_{i=6}^{10} \binom{10}{i}.2^i.8^{10-i}$$.
+$$\leftrightarrow$$
+$$P(F=1)=\sum_{i=6}^{10} \binom{10}{i}.2^i.8^{10-i}=\binom{10}{6}.2^6.8^{4}+\binom{10}{7}.2^6.8^{3}+\binom{10}{8}.2^6.8^{2}+\binom{10}{9}.2^9.8^{1}+\binom{10}{10}.2^10.8^{0}$$.
+$$\leftrightarrow$$
+$$ P(F=1)=210 \cdot 0.000064 \cdot 0.4096 + 120 \cdot 0.0000128 \cdot 0.512 + 45 \cdot 0.00000256 \cdot 0.64 + 10 \cdot 0.000000512 \cdot 0.8 + 1 \cdot 0.0000001024 \cdot 1$$
+$$\leftrightarrow$$
+$$ P(F=1)=0.0063693824$$
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+\section{3.2.14}
+The captain of a Navy gunboat orders a volley of twenty-five missiles to be fired at random along a five-hundred-foot stretch of shoreline that he hopes to establish as a beachhead. Dug into the beach is a thirty- foot-long bunker serving as the enemy?s first line of defense. The captain has reason to believe that the bunker will be destroyed if at least three of the missiles are on- target. What is the probability of that happening?
+\newline
+\newline
+\textbf{Answer:}
+\newline
+Define D as destroying the bunker and H as hitting the bunker. We need to find $P(D=1)=P(H>=3)$. We will find the complement of this.
+
+$$ P(D=1)=1-P(H<3)=1-\sum_{i=0}^{2}\binom{25}{i}.06^i.94^{25-i}$$
+$$\leftrightarrow$$
+$$ P(D=1)=1-\binom{25}{0}.06^0.94^{25}-\binom{25}{1}.06^1.94^{24}-\binom{25}{2}.06^2.94^{23}$$
+$$\leftrightarrow$$
+$$ P(D=1)=1-.2129-.3398-.2602$$
+$$\leftrightarrow$$
+$$ P(D=1)=.187$$
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+\section{3.2.20}
+A corporate board contains twelve members. The board decides to create a five-person Committee to Hide Corporation Debt. Suppose four members of the board are accountants. What is the probability that the Committee will contain two accountants and three nonaccountants?
+\newline
+\newline
+\textbf{Answer:}
+\newline
+$$ \frac{\binom{4}{2} \cdot \binom{8}{3}}{\binom{12}{5}} = .4242 $$
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+\section{3.2.34}
+
+Some nomadic tribes, when faced with a life threatening contagious disease, try to improve their chances of survival by dispersing into smaller groups. Suppose a tribe of twenty-one people, of whom four are carriers of the disease, split into three groups of seven each. What is the probability that at least one group is free of the disease? (Hint: Find the probability of the complement.)
+\newline
+\newline
+\textbf{Answer:}
+\newline
+$$1-P(Every\_group\_infected) = 1 - 3 \cdot \frac{\binom{7}{2}\binom{7}{1}\binom{7}{1}}{\binom{21}{4}}=.48$$
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+\section{3.3.3}
+
+Suppose a fair die is tossed three times. Let $X$ be the largest of the three faces that appear. Find $p(X)$.
+\newline
+\newline
+\textbf{Answer:}
+\newline
+There are $6^3=216$ possible outcomes.
+The probability of the maximum being equal to m is $\frac{m \cdot m \cdot m}{216}=\frac{m^3}{216}$
+\newline
+Then, $P(m)= \frac{m^3}{216}$, so $p_x(m)=P(m)-P(m-1)=\frac{m^3}{216}-\frac{(m-1)^3}{216}$.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+\section{3.3.12}
+
+Find the cdf for the random variable $X$ in Question 3.3.3.
+\newline
+\newline
+\textbf{Answer:}
+\newline
+From inspection, $P(X=m)=m^3/216$
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+\section{Module 2 Simulation}
+Consider a Baseball World Series (best of 7 game series) in which team A theoretically has a 0.55 chance of winning each game against team B. Simulate the probability that team A would win a World Series against team B by simulating 1000 World Series. You many use any software to conduct the simulation. 
+\newline
+\newline
+\textbf{Answer:}
+\newline
+\begin{lstlisting}
+winsForA <- 0
+for (i in 1:1000){
+  if (sum(runif(7)<=.55)>=4){winsForA = winsForA + 1}
+}
+paste0(winsForA)
+\end{lstlisting}
+This creates an output of around 611 wins for team A, making the probability approximately 61.1\%.
+\end{homeworkProblem}
+\end{document}
